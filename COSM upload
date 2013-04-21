@@ -1,0 +1,16 @@
+import time
+import os
+import eeml
+import random
+
+API_KEY = 'MVMJRJVkx-KNQrqkeG1aRBvsFgGSAKwrMThnNmMrek44RT0g'
+FEED = 126704
+
+API_URL = '/v2/feeds/126704.xml'
+
+while True:
+  pac = eeml.Pachube(API_URL, API_KEY)
+	pac.update([eeml.Data(0, (230 + random.randint(0,30))/10.0)])
+	pac.update([eeml.Data(1, (13000 + random.randint(0,100))/10.0)])
+	pac.put()
+	time.sleep(10)
