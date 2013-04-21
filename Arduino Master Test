@@ -1,0 +1,23 @@
+//SpaceApps Challenge NASA
+//ArduSat Guatemala
+//I2C test Arduino PRO-Mini
+
+#include <Wire.h>           //Library that includes all I2C configuration
+#define I2C_SLAVE_ADDR 0x01 //Slave Address to communicate with 
+
+void setup()
+{
+  Wire.begin();             //Join I2C bus
+  Serial.begin(9600);       //Start Serial port for verification of data
+}
+
+void loop()
+{
+   Wire.requestFrom(I2C_SLAVE_ADDR,27);    //Request Data Packet from Slave
+   while(Wire.available()){                //Condition for receiving
+   char c = Wire.read();                   //Read Data and store it on a Array
+   Serial.print(c);                        //Print result in Serial
+  }
+  delay(500);
+}
+
